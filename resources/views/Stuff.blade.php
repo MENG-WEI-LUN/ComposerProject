@@ -1,10 +1,21 @@
 @extends('layouts.frame')
 @section('javascript')
+
+function Edit(key,id)
+{
+    alert("GG");
+    {{-- $('#name').val($('#edit_'+key).children().html());
+    $('#phone').val($('#edit_'+key).children().next().html());
+    $('#ID').val($('#edit_'+key).children().next().next().html()); --}}
+}
+
 function Alert(id)
 {
-    if(confirm("確定要刪除此資料嗎?"))
+    if(confirm("確定要刪除此資料嗎?")){
     location.href="Stuff/"+id;
+    }
 }
+
 @endsection
 
 @section('content')
@@ -72,12 +83,12 @@ function Alert(id)
                       <th></th>
                       <th></th>
                     </tr>
-                    @foreach($data as $datus)
-                      <tr>
+                    @foreach($data as $key => $datus)
+                      <tr id="edit_{{$key}}">
                         <td>{{$datus->name}}</td>
                         <td>{{$datus->phone}}</td>
                         <td>{{$datus->stu_id}}</td>
-                        <td><button type="button" class="btn btn-success btn " data-toggle="modal" data-target="#stuff-edit">編輯</button></td>
+                        <td><button type="button"  class="btn btn-success btn " data-toggle="modal" data-target="#stuff-edit" onclick="Edit({{$key}},{{$datus->id}})">編輯</button></td>
                         <td><button type="button" class="btn btn-danger btn " onclick="Alert({{$datus->id}})">刪除</button></td>
                       </tr>
                     @endforeach
