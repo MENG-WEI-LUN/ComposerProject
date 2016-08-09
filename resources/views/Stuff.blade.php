@@ -2,6 +2,7 @@
 @section('javascript')
 function Alert(id)
 {
+    if(confirm("確定要刪除此資料嗎?"))
     location.href="Stuff/"+id;
 }
 @endsection
@@ -55,7 +56,7 @@ function Alert(id)
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">加入新肝</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">儲存</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->     

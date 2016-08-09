@@ -94,8 +94,8 @@ class StuffController extends Controller
      */
     public function destroy($id)
     {
-        $data = Stuff::find($id);
-        $data->delete();
+        Stuff::destroy($id);
+       
 
         return Redirect::route('Stuff');
     }
