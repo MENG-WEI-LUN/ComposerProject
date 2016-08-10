@@ -20,6 +20,7 @@ Route::get('Signed',['as' => 'Signed','uses' =>'SignedController@index']);
 Route::get('Stuff',['as' => 'Stuff','uses' =>'StuffController@index']);
 Route::get('Stuff/{id}','StuffController@destroy');
 Route::post('Stuff/create','StuffController@create');
+Route::post('Stuff/edit','StuffController@edit');
 
 Route::get('LOG',['as' => 'LOG','uses' =>'LOGController@index']);
 

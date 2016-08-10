@@ -1,12 +1,20 @@
 @extends('layouts.frame')
 @section('javascript')
 
+var stdid;
+function Save()
+{
+    location.href="Stuff/edit/";
+    console.log(stdid);
+}
+
 function Edit(key,id)
 {
-    alert("GG");
-    {{-- $('#name').val($('#edit_'+key).children().html());
+    $('#name').val($('#edit_'+key).children().html());
     $('#phone').val($('#edit_'+key).children().next().html());
-    $('#ID').val($('#edit_'+key).children().next().next().html()); --}}
+    $('#ID').val($('#edit_'+key).children().next().next().html()); 
+    $('#key').val(''+id);
+    stdid = id;
 }
 
 function Alert(id)
@@ -60,15 +68,18 @@ function Alert(id)
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">編輯成員資料</h4>
                         </div>
+                        <form id="editForm" action="{{URL::asset('Stuff/edit')}}" method="post">
                         <div class="modal-body">                              
-                            <p>成員名稱 </p><input type="text" id="name" placeholder="王小明">
-                            <p>聯絡資訊 </p><input type="text" id="phone" placeholder="09XXXXXXXX">
-                            <p>學號 </p><input type="text" id="ID" placeholder="4XXXXXXX">                            
+                            <p>成員名稱 </p><input type="text" name="edit_name" id="name" placeholder="王小明">
+                            <p>聯絡資訊 </p><input type="text" name="edit_phone" id="phone" placeholder="09XXXXXXXX">
+                            <p>學號 </p><input type="text" name="edit_ID" id="ID" placeholder="4XXXXXXX">
+                            <input type="hidden" name="edit_key" id="key">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">儲存</button>
+                            <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="Save()">儲存</button>
                         </div>
+                        </form>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal -->     
             </div>

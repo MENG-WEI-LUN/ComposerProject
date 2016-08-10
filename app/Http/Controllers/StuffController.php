@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Session\TokenMismatchException;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
 use App\Models\Stuff;
 use App\Http\Requests;
 
@@ -28,6 +28,7 @@ class StuffController extends Controller
      */
     public function create()
     {
+        // dd($_SERVER['REMOTE_ADDR']);
         $name = $_POST['name_create'];
         $phone = $_POST['phone_create'];
         $id = $_POST['ID_create'];
@@ -69,9 +70,22 @@ class StuffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+
+        $name = $_POST['edit_name'];
+        $phone = $_POST['edit_phone'];
+        $stdid = $_POST['edit_ID'];
+        $number =$_POST['edit_key'];
+
+        $data = Stuff::find($number);
+        dd($data);
+        $data->name = $name;
+        $data->phone = $phone;
+        $data->stu_id= $stdid;
+
+        $data->save();
+        return Redirect::route('Stuff');
     }
 
     /**
@@ -83,7 +97,7 @@ class StuffController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
