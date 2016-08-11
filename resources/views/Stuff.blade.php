@@ -68,9 +68,9 @@ function Alert(id)
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">編輯成員資料</h4>
                         </div>
-                        <form id="editForm" action="{{URL::asset('Stuff/edit')}}" method="post">
+                        {{ Form::open(array('route' => 'edit', 'method' => 'post')) }}
                         <div class="modal-body">                              
-                            <p>成員名稱 </p><input type="text" name="edit_name" id="name" placeholder="王小明">
+                            <p>成員名稱 </p>{{ Form::text('edit_name',array('id' => 'name' , 'placeholder' => "王小名")) }}<!-- <input type="text" name="edit_name" id="name" placeholder="王小明"> -->
                             <p>聯絡資訊 </p><input type="text" name="edit_phone" id="phone" placeholder="09XXXXXXXX">
                             <p>學號 </p><input type="text" name="edit_ID" id="ID" placeholder="4XXXXXXX">
                             <input type="hidden" name="edit_key" id="key">
@@ -79,8 +79,8 @@ function Alert(id)
                             <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                             <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="Save()">儲存</button>
                         </div>
-                        </form>
-                    </div><!-- /.modal-content -->
+                        {{ Form::close() }}
+                    </div><!-- /.modal-content   {{ Form::text('first_name', 'Chuck', array('class' => 'field')) }}-->
                 </div><!-- /.modal -->     
             </div>
 
